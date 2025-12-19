@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>❤️ Открытка для тебя</title>
+    <style>
+        body {
+            background: pink;
+            text-align: center;
+            padding: 20px;
+            font-family: Arial;
+        }
+        h1 { color: red; }
+        img { 
+            width: 300px; 
+            border: 5px solid red; 
+            border-radius: 10px;
+            margin: 20px;
+        }
+        button {
+            background: red;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>❤️ Тайная валентинка! ❤️</h1>
+    <img src="image.jpg" alt="Прикол">
+    <p><strong>Кто-то отправил тебе это! 😘</strong></p>
+    <button onclick="alert('Ха-ха! Не выключается! 😂')">
+        🔇 Выключить звук
+    </button>
+    
+    <audio autoplay loop>
+        <source src="sound.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.querySelector('audio').volume = 1.0;
+        document.body.onclick = function() {
+            document.querySelector('audio').play();
+        };
+    </script>
+</body>
+</html>
