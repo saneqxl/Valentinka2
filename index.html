@@ -1,50 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>❤️ Открытка для тебя</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тайная валентинка ❤️</title>
     <style>
         body {
-            background: pink;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 20px;
-            font-family: Arial;
+            padding: 50px;
+            color: #8b0000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        h1 { color: red; }
-        img { 
-            width: 300px; 
-            border: 5px solid red; 
-            border-radius: 10px;
-            margin: 20px;
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.2);
+            border: 3px solid #ff6b6b;
         }
+        
+        h1 {
+            color: #ff4d4d;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .heart {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
         button {
-            background: red;
+            background: linear-gradient(145deg, #ff6b6b, #ff4757);
             color: white;
-            padding: 15px 30px;
-            font-size: 18px;
             border: none;
-            border-radius: 5px;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
             cursor: pointer;
-            margin: 20px;
+            margin: 25px 0;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(255, 71, 87, 0.5);
         }
     </style>
 </head>
 <body>
-    <h1>❤️ Тайная валентинка! ❤️</h1>
-    <img src="image.jpg" alt="Прикол">
-    <p><strong>Кто-то отправил тебе это! 😘</strong></p>
-    <button onclick="alert('Ха-ха! Не выключается! 😂')">
-        🔇 Выключить звук
-    </button>
+    <div class="card">
+        <div class="heart">💌</div>
+        <h1>ТЕБЕ ПРИСЛАЛИ ТАЙНУЮ ВАЛЕНТИНКУ!</h1>
+        
+        <p style="font-size: 18px; margin: 20px 0; line-height: 1.6;">
+            Кто-то тайно влюблен в тебя...<br>
+            Но боится признаться!<br><br>
+            Нажми на кнопку, чтобы узнать правду!
+        </p>
+        
+        <button onclick="alert('ЛОХАНУЛСЯ! 😂\nЗвук не выключить!')">
+            УЗНАТЬ ПРАВДУ
+        </button>
+        
+        <p style="color: #ff6b6b; margin-top: 20px; font-weight: bold;">
+            ⏎ Нажми сюда ⏎
+        </p>
+    </div>
     
-    <audio autoplay loop>
+    <!-- ЗВУК ИЗ ФАЙЛА В РЕПОЗИТОРИИ -->
+    <audio id="sound" autoplay loop>
         <source src="sound.mp3" type="audio/mpeg">
     </audio>
     
     <script>
-        document.querySelector('audio').volume = 1.0;
-        document.body.onclick = function() {
-            document.querySelector('audio').play();
-        };
+        // Включаем звук
+        const sound = document.getElementById('sound');
+        sound.volume = 1.0;
+        
+        // Если звук не включился автоматически
+        sound.play().catch(() => {
+            // Включаем при клике
+            document.body.onclick = () => sound.play();
+        });
+        
+        // Показываем подсказку через 3 секунды
+        setTimeout(() => {
+            if (sound.paused) {
+                alert("👆 Кликни на страницу, чтобы включить звук!");
+            }
+        }, 3000);
     </script>
 </body>
 </html>
